@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>ファイルアップロード</title>
+        <style>
+            body {
+                width: 100%;
+                text-align:center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>ファイルアップロード</h1>
+        <div>
+            <form id="form" enctype="multipart/form-data" action="/upload" method="POST">
+                <input type="file" name="file" class="input file-input" id="imgInp" />
+                <input type="text" name="filename" />
+                <button class="button" type="submit">Upload</button>
+            </form>
+        </div>
+        <img id="img-preview" src="#" alt="image preview" style="max-height: 500px;" />
+        <div>
+            <a href="/myfsfolder">see /myfsfolder</a>
+        </div>
+    </body>
+    <script>
+        let imgInp = document.getElementById("imgInp")
+        imgInp.addEventListener("change", evt => {
+            const [file] = imgInp.files
+            if (file) {
+                let imgPreview = document.getElementById("img-preview")
+                imgPreview.src = URL.createObjectURL(file)
+            }
+        })
+    </script>
+</html>

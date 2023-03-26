@@ -1,0 +1,11 @@
+version: '3'
+services: 
+  web:
+    build: .
+    volumes:
+      - go-my-fs-volume:/app/myfsfolder
+    ports:
+      - "9999:8080"
+
+volumes:
+  go-my-fs-volume:
